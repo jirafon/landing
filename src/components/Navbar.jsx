@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 
-const Navbar = ({ handleContactClick }) => {
+const Navbar = ({ handleContactClick, handleAboutClick }) => {
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
@@ -17,12 +17,19 @@ const Navbar = ({ handleContactClick }) => {
     setNav(false);
   };
 
+  const handleAbout = () => {
+    handleAboutClick();
+    setNav(false);
+  };
+
   return (
     <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-black-800'>
       <h1 className='w-full text-3xl font-bold text-[#00df9a]'>Compliax</h1>
       <ul className='hidden md:flex mx-auto'>
         <li className='p-4'>Inicio</li>
-        <li className='p-4'>Acerca</li>
+        <li className='p-4 cursor-pointer' onClick={handleAbout}>
+          Acerca
+        </li>
         <li className='p-4 cursor-pointer' onClick={handleContact}>
           Contacto
         </li>
@@ -38,7 +45,9 @@ const Navbar = ({ handleContactClick }) => {
       <ul className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500' : 'ease-in-out duration-500 fixed left-[-100%]'}>
         <h1 className='w-full text-3xl font-bold text-[#00df9a] m-4'>Cumpliax</h1>
         <li className='p-4 border-b border-gray-600'>Inicio</li>
-        <li className='p-4 border-b border-gray-600'>Acerca</li>
+        <li className='p-4 cursor-pointer' onClick={handleAbout}>
+          Quienes Somos
+        </li>
         <li className='p-4 cursor-pointer' onClick={handleContact}>
           Contacto
         </li>

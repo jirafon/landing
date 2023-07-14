@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Analytics from './components/Analytics';
 import Cards from './components/Cards';
 import Footer from './components/Footer';
@@ -10,29 +10,32 @@ import About from './components/About';
 function App() {
   const [showNewsletter, setShowNewsletter] = useState(false);
   const [animationClass, setAnimationClass] = useState('');
-
-  useEffect(() => {
-    if (showNewsletter) {
-      setAnimationClass('animate__slideInRight'); // or 'animate__slideInLeft' for left animation
-    }
-  }, [showNewsletter]);
+  const aboutRef = useRef(null);
 
   const handleContactClick = () => {
     setShowNewsletter(true);
+    setAnimationClass('animate__slideInRight'); // or 'animate__slideInLeft' for left animation
+  };
+
+  const handleAboutClick = () => {
+    aboutRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <div>
-      <Navbar handleContactClick={handleContactClick} />
+      <Navbar handleContactClick={handleContactClick} handleAboutClick={handleAboutClick} />
       <Hero />
       <Analytics />
       <Cards />
       <div>
-        <div className={`animate__animated ${animationClass}`}>
-          <Newsletter />
+        <div ref={aboutRef}>
+          <About />
         </div>
-        <About />
-
+      </div>
+      <div>
+        <div className={`animate__animated ${animationClass}`}>
+          {showNewsletter && <Newsletter />}
+        </div>
       </div>
       <Footer />
     </div>
