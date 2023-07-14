@@ -5,3 +5,16 @@
 body {
   background-color: #000300;
 }
+
+.nav-button {
+  border: 2px solid black;
+  padding: 8px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  background-color: black;
+  color: white;
+}
