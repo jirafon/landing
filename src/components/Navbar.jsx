@@ -8,6 +8,14 @@ const Navbar = () => {
     setNav(!nav);
   };
 
+  const handleLogin = () => {
+    window.location.replace('https://compliax.onrender.com');
+  };
+
+  const handleSignUp = () => {
+    window.location.replace('https://compliax.onrender.com/register');
+  };
+
   return (
     <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-black-800'>
       <h1 className='w-full text-3xl font-bold text-[#00df9a]'>Compliax</h1>
@@ -16,10 +24,10 @@ const Navbar = () => {
         <li className='p-4'>Acerca</li>
         <li className='p-4'>Contacto</li>
         <li className='p-4 menu-item-box'>
-          <button className='border-b-2 border-black-800 nav-button'>Log in</button>
+          <button className='border-b-2 border-black-800 nav-button' onClick={handleLogin}>Entrar</button>
         </li>
         <li className='p-4'>
-          <button className='border-b-2 border-black-800 nav-button'>Sign up</button>
+          <button className='border-b-2 border-black-800 nav-button' onClick={handleSignUp}>Registrarse</button>
         </li>
       </ul>
       <div onClick={handleNav} className='block md:hidden'>
@@ -31,10 +39,10 @@ const Navbar = () => {
         <li className='p-4 border-b border-gray-600'>Acerca</li>
         <li className='p-4'>Contacto</li>
         <li className='p-4 menu-item-box'>
-          <button className='border-b-2 border-black-800 nav-button' onClick={() => window.location.href = 'https://compliax.onrender.com'}>Entrar</button>
+          <button className='border-b-2 border-black-800 nav-button' onClick={handleLogin}>Entrar</button>
         </li>
         <li className='p-4'>
-          <button className='border-b-2 border-blue-800 nav-button'onClick={() => window.location.href = 'https://compliax.onrender.com/register'}>Registrarse </button>
+          <button className='border-b-2 border-blue-800 nav-button' onClick={handleSignUp}>Registrarse</button>
         </li>
       </ul>
     </div>
